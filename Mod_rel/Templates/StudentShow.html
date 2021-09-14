@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+{% load crispy_forms_tags %}
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table class="table table-dark">
+        <tr>
+            <th>Student Depname</th><br><br>
+
+            <th>Student Name</th><br><br>
+            <th>Student Rno</th><br><br>
+            <th>Student Marks</th><br><br>
+        </tr>
+    
+        {% for i in stu %}
+        <tr>
+            <td>{{i.Department}}</td>
+            <td>{{i.sname}}</td>
+            <td>{{i.rn}}</td>
+            <td>{{i.marks}}</td>
+            <td><a href="{% url 'upstud' i.id %}"><button>Update</button></a></td>
+            <td><a href="{% url 'delstud' i.id %}"><button>Delete</button></a></td>
+           
+           
+        </tr>
+        {% endfor %}
+    </table> 
+</body>
+</html>
+    
+
+
+
+
+
+  
+   
+    

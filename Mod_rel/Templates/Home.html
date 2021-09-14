@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form class="form-inline my-2 my-lg-0" method='POST'>
+        {% csrf_token %}
+        
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" name='search' aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+
+        
+        
+    </form>
+        
+
+    {% if dep %}
+{{dep}}
+<table border="1px">
+    <tr>
+       <th>Department</th> 
+       <th>Name of Lecturer</th>
+       <th>salary</th>
+      
+
+
+    </tr>
+        {% for i in lec_dep %}
+    <tr>
+
+        <td>{% for j in i.Department.all %}
+            {{j}}
+        {% endfor %}</td>
+        <td>{{i.Department}}</td>
+        <td>{{i.lname}}</td>
+        <td>{{i.sal}}</td>
+        
+    </tr>
+    {% endfor %}
+</table><br><br>
+
+
+
+<table border="1px">
+    <tr>
+        <th>Department</th>
+        <th>Roll no</th>
+        <th>Name of Student</th>
+        <th>Marks</th>
+    </tr>
+    {% for i in stu_dep %}
+    <tr>
+        <td>{{i.Department}}</td>
+        <td>{{i.rn}}</td>
+        <td>{{i.sname}}</td>
+        <td>{{i.marks}}</td>
+        
+    </tr>
+    {% endfor %}
+</table>
+{% elif stu %}
+<table border="1px">
+    <tr>
+        <th>Department</th>
+        <th>Roll no</th>
+        <th>Name of Student</th>
+        <th>Marks</th>
+    </tr>
+    {% for i in stu %}
+    <tr>
+        
+        <td>{{i.Department}}</td>
+        <td>{{i.rn}}</td>
+        <td>{{i.sname}}</td>
+        <td>{{i.marks}}</td>
+        
+    </tr>
+    {% endfor %}
+</table>
+
+
+{% elif lec %}
+<table border="1px">
+    <tr>
+       <th>Department</th> 
+       <th>Name of Lecturer</th>
+       <th>salary</th>
+     
+
+
+    </tr>
+        {% for i in lec %}
+    <tr>
+        <td>{% for j in i.Department.all %}
+            {{j}}
+        {% endfor %}</td>
+        <td>{{i.lname}}</td>
+        <td>{{i.sal}}</td>
+        
+    </tr>
+    {% endfor %}
+    {% elif ord %}
+        
+</table>
+{% else %}
+<h4>Recored Not Found</h4>
+
+{% endif %}
+
+
+
+</body>
+</html>
+
+
+   
+
+    
+        
+        
+       
+
+    
+    

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{% load crispy_forms_tags %}
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table class="table table-dark">
+        <tr>
+            
+            <th>Lecture Department</th>
+            <th>Lecture sal</th>
+            <th>Leture Lname</th>
+           
+        </tr>
+    
+
+        {% for i in Lec %}
+        <tr>
+            <td>{% for j in i.Department.all %}
+
+             {{j}}&nbsp;
+            {% endfor %}</td>
+            <!-- <td>{{i.Department.all}}</td> -->
+            <td>{{i.sal}}</td>
+            <td>{{i.lname}}</td>
+            <td><a href="{% url 'uplec' i.id %}"><button>Update</button></a></td>
+            <td><a href="{% url 'del' i.id %}"><button>Delete</button></a></td>
+            
+           
+        </tr>
+        {% endfor %}
+    </table> 
+</body>
+</html>
+
